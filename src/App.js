@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
+import { nanoid } from 'nanoid';
 import IntroPage from './components/IntroPage';
 import QuizPage from './components/QuizPage';
 
@@ -17,7 +18,7 @@ function App() {
       .then(data => setQuizData(
         data.results.map((question, index) => {
           return {
-            id: index,
+            id: nanoid(),
             question: question.question,
             answers: 
               [{answer: question.correct_answer, correct: true},
@@ -37,7 +38,7 @@ function App() {
       {!quizStart && 
         <div className="quiz-page">
           {quizData.map((question, index) => {
-            return <QuizPage key={index} question={question}/>
+            return <QuizPage key={index} question={question} id={question.id}/>
           })}
           <button className="check-answers-btn">Check answers</button>
         </div>

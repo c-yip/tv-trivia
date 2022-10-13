@@ -1,57 +1,24 @@
-export default function QuizPage(){
+export default function QuizPage(props){
+  function replaceQuotesAndApostrophes(string) {
+    const question = string;
+    const newQuestion = question.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
+    return newQuestion;
+  }
+
+  const answerElements = props.question.answers.map((answer, index) => (
+      <div className="choice" key={index}>
+        <input type="radio" name={props.id} id={answer.answer} value={answer.answer} />
+        <label htmlFor={props.id}>{answer.answer}</label>
+      </div>
+    )
+  );
+
+  console.log(props.question.answers[0].answer);
+
   return (
-    <div className='quiz-page'>
-      <div className="question-answers">
-        <h3>Question one?</h3>
-        <div className="choices">
-          <button>Choice one</button>
-          <button>Choice two</button>
-          <button>Choice three</button>
-          <button>Choice four</button>
-        </div>
-      </div>
-
-      <div className="question-answers">
-        <h3>Question two?</h3>
-        <div className="choices">
-          <button>Choice one</button>
-          <button>Choice two</button>
-          <button>Choice three</button>
-          <button>Choice four</button>
-        </div>
-      </div>
-
-      <div className="question-answers">
-        <h3>Question three?</h3>
-        <div className="choices">
-          <button>Choice one</button>
-          <button>Choice two</button>
-          <button>Choice three</button>
-          <button>Choice four</button>
-        </div>
-      </div>
-
-      <div className="question-answers">
-        <h3>Question four?</h3>
-        <div className="choices">
-          <button>Choice one</button>
-          <button>Choice two</button>
-          <button>Choice three</button>
-          <button>Choice four</button>
-        </div>
-      </div>
-
-      <div className="question-answers">
-        <h3>Question five?</h3>
-        <div className="choices">
-          <button>Choice one</button>
-          <button>Choice two</button>
-          <button>Choice three</button>
-          <button>Choice four</button>
-        </div>
-      </div>
-
-      <button className="check-answers-btn">Check answers</button>
+    <div className="question-answers">
+      <h3>{replaceQuotesAndApostrophes(props.question.question)}</h3>
+      {answerElements}
     </div>
   )
 }
