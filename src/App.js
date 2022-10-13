@@ -11,11 +11,22 @@ function App() {
     setQuizStart(prev => !prev);
   }
 
-  // fetch quiz data from API and add to state
   useEffect(() => {
     fetch('https://opentdb.com/api.php?amount=5&category=14&type=multiple')
       .then(res => res.json())
-      .then(data => setQuizData(data.results))
+      .then(data => setQuizData(
+        data.results.map((question, index) => {
+          return {
+            id: index,
+            question: question.question,
+            answers: 
+              [{answer: question.correct_answer, correct: true},
+              {answer: question.incorrect_answers[0], correct: false},
+              {answer: question.incorrect_answers[1], correct: false},
+              {answer: question.incorrect_answers[2], correct: false}]
+          }
+        })
+      ))
   }, []);
 
   console.log(quizData);
@@ -23,7 +34,14 @@ function App() {
   return (
     <main>
       {quizStart && <IntroPage startGame={startGame}/>}    
-      {!quizStart && <QuizPage />}
+      {!quizStart && 
+        <div className="quiz-page">
+          {quizData.map((question, index) => {
+            return <QuizPage key={index} question={question}/>
+          })}
+          <button className="check-answers-btn">Check answers</button>
+        </div>
+      }
       {/* footer */}
     </main>
   );
