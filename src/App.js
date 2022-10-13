@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './App.css';
 import IntroPage from './components/IntroPage';
+import QuizPage from './components/QuizPage';
 
 function App() {
   const [quizStart, setQuizStart] = useState(true);
@@ -12,7 +13,7 @@ function App() {
   return (
     <main>
       {quizStart && <IntroPage startGame={startGame}/>}    
-      {!quizStart && <p>questions page</p>}
+      {!quizStart && <QuizPage />}
     </main>
   );
 }

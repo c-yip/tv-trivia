@@ -7,11 +7,14 @@ main {
   background-color: #F5EFE6;
 }
 
-.intro-page {
+.intro-page, .quiz-page {
   background-color: #F5EFE6;
   position: absolute;
   height: 100%;
   width:100%;
+}
+
+.intro-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,4 +55,10 @@ main {
 
 .start-btn:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
+.quiz-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
