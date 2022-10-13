@@ -3,11 +3,12 @@ html, body, h1, p {
   padding: 0;
 }
 
-body {
+main {
   background-color: #F5EFE6;
 }
 
 .intro-page {
+  background-color: #F5EFE6;
   position: absolute;
   height: 100%;
   width:100%;

@@ -1,20 +1,19 @@
+import React, { useState } from "react";
 import './App.css';
+import IntroPage from './components/IntroPage';
 
 function App() {
-  const [quizStart, setQuizStart] = false;
+  const [quizStart, setQuizStart] = useState(true);
   
-  return (
-    // introPage component
-    <div className='intro-page'>
-      <div className='intro-text'>
-        <h1 className='title'>TV TRIVIA</h1>
-        <p className='message'>Put your totally useful TV knowledge to the test!</p>
-      </div>
-      <button className='start-btn'>Start quiz</button>
-    </div>    
+  function startGame() {
+    setQuizStart(prev => !prev);
+  }
 
-    // questions page
-      // individual question components
+  return (
+    <main>
+      {quizStart && <IntroPage startGame={startGame}/>}    
+      {!quizStart && <p>questions page</p>}
+    </main>
   );
 }
 
