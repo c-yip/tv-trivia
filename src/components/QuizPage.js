@@ -6,14 +6,19 @@ export default function QuizPage(props){
   }
 
   const answerElements = props.question.answers.map((answer, index) => (
-      <div className="choice" key={index}>
-        <input type="radio" name={props.id} id={answer.answer} value={answer.answer} />
-        <label htmlFor={props.id}>{answer.answer}</label>
+      <div className="choices" key={index}>
+        <input 
+          type="radio" 
+          name={props.id} 
+          id={props.id} 
+          value={answer.correct} 
+          onChange={(e) => props.handleChange(e)} 
+        />
+
+        <label htmlFor={props.id}>{replaceQuotesAndApostrophes(answer.answer)}</label>
       </div>
     )
   );
-
-  console.log(props.question.answers[0].answer);
 
   return (
     <div className="question-answers">
