@@ -88,6 +88,22 @@ function App() {
     setGameReset(prev => !prev);
   }
 
+  function scoreMessage() {
+    if (score === 5) {
+      return `${score}/5, a perfect score! You watch TOO much TV!`;
+    } else if (score === 4) {
+      return `${score}/5, that's a log time watching TV!`;
+    } else if (score === 3) {
+      return `${score}/5, you're pretty good at this!`;
+    } else if (score === 2) {
+      return `${score}/5, yep, you're a TV watcher!`;
+    } else if (score === 1) {
+      return `${score}/5, go watch more TV!`;
+    } else if (score === 0) {
+      return `${score}/5, I guess TV really is dead...`;
+    }
+  }
+
   console.log(quizData);
 
   return (
@@ -98,9 +114,9 @@ function App() {
           {quizData.map((question, index) => {
             return <QuizPage key={index} question={question} id={question.id} handleChange={handleChange}/>
           })}
+          {gameOver && <h3 className="score-message">{scoreMessage()}</h3>}
           {!gameOver ? <button className="check-answers-btn" onClick={calculateScore}>Check answers</button> : 
             <button className="play-again-btn" onClick={resetGame}>Play again</button>}
-          {gameOver && <h3 className="score-message">{`You scored ${score}/5!`}</h3>}
         </div>
       }
       {/* footer */}
