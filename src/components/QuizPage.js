@@ -21,7 +21,7 @@ export default function QuizPage(props){
           onChange={(e) => props.handleChange(e)} 
         />
 
-        <label htmlFor={props.id}>{replaceQuotesAndApostrophes(answer.answer)}</label>
+        <label htmlFor={props.id + index}>{replaceQuotesAndApostrophes(answer.answer)}</label>
       </div>
     )
   );
