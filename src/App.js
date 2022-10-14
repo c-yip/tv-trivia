@@ -114,8 +114,6 @@ function App() {
     localStorage.setItem('localScores', JSON.stringify(scoreArray));
   }, [scoreArray]);
 
-  console.log(quizData);
-
   return (
     <main className="container-fluid">
       {quizStart && <IntroPage startGame={startGame} gameReady={gameReady} scoreArray={scoreArray}/>}    
