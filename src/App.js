@@ -63,11 +63,13 @@ function App() {
       let answerElement = document.getElementById(question.id + index);
       
       if (answer.correct === true) {
-        answerElement.nextSibling.style.color = 'green';
+        answerElement.nextSibling.style.backgroundColor = 'green';
+        answerElement.nextSibling.style.borderColor = 'green';
       }
 
       if (answerElement.checked && answer.correct === false) {
-        answerElement.nextSibling.style.color = 'red';
+        answerElement.nextSibling.style.backgroundColor = 'red';
+        answerElement.nextSibling.style.borderColor = 'red';
       }
     }))
   }
@@ -110,13 +112,18 @@ function App() {
     <main className="container-fluid">
       {quizStart && <IntroPage startGame={startGame} gameReady={gameReady}/>}    
       {!quizStart && 
-        <div className="quiz-page">
-          {quizData.map((question, index) => {
-            return <QuizPage key={index} question={question} id={question.id} handleChange={handleChange}/>
-          })}
-          {gameOver && <h3 className="score-message">{scoreMessage()}</h3>}
-          {!gameOver ? <button className="check-answers-btn" onClick={calculateScore}>Check answers</button> : 
-            <button className="play-again-btn" onClick={resetGame}>Play again</button>}
+        <div className="quiz-page container-fluid">
+          <div className="row">
+            {quizData.map((question, index) => {
+              return <QuizPage key={index} question={question} id={question.id} handleChange={handleChange}/>
+            })}
+          </div>
+          
+          <div className="row p-3 d-flex gap-2 justify-content-center">
+            {gameOver && <h2 className="score-message">{scoreMessage()}</h2>}
+            {!gameOver ? <button className="check-answers-btn btn btn-outline-primary btn-lg w-50" onClick={calculateScore}>Check answers</button> : 
+              <button className="play-again-btn btn btn-outline-primary btn-lg w-50" onClick={resetGame}>Play again</button>}
+          </div>
         </div>
       }
       {/* footer */}

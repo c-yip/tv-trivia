@@ -13,7 +13,8 @@ export default function QuizPage(props){
 
   const answerElements = props.question.answers.map((answer, index) => (
       <div className="choices" key={index}>
-        <input 
+        <input
+          className="btn-check" 
           type="radio" 
           name={props.id} 
           id={props.id + index} 
@@ -21,15 +22,21 @@ export default function QuizPage(props){
           onChange={(e) => props.handleChange(e)} 
         />
 
-        <label htmlFor={props.id + index}>{replaceQuotesAndApostrophes(answer.answer)}</label>
+        <label 
+          htmlFor={props.id + index}
+          className="btn btn-primary"
+        >{replaceQuotesAndApostrophes(answer.answer)}
+        </label>
       </div>
     )
   );
 
   return (
-    <div className="question-answers">
-      <h3>{replaceQuotesAndApostrophes(props.question.question)}</h3>
-      {answerElements}
+    <div className="question-answers p-3">
+      <h3 className="p-3">{replaceQuotesAndApostrophes(props.question.question)}</h3>
+      <div className="answers p-3 d-flex gap-2 d-flex flex-column flex-md-row">
+        {answerElements}
+      </div>
     </div>
   )
 }

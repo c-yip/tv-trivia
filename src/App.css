@@ -1,6 +1,11 @@
-html, body, h1, p {
+html, body, h1, h3, p {
   margin: 0;
   padding: 0;
+}
+
+main {
+  background-image: url(./intro-page.png);
+  background-size: cover;
 }
 
 .intro-page, .quiz-page {
@@ -8,8 +13,6 @@ html, body, h1, p {
 }
 
 .intro-page {
-  background-image: url(./intro-page.png);
-  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,7 +59,4 @@ html, body, h1, p {
 .quiz-page {
   background-image: url(./questions.png);
   background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
 }
