@@ -59,9 +59,14 @@ function App() {
 
   function showWhichAnswersAreCorrect() {
     quizData.map(question => question.answers.map((answer, index) => {
-      console.log(question.id+index)
+      let answerElement = document.getElementById(question.id + index);
+      
       if (answer.correct === true) {
-        document.getElementById(question.id + index).nextSibling.style.color = 'green';
+        answerElement.nextSibling.style.color = 'green';
+      }
+
+      if (answerElement.checked && answer.correct === false) {
+        answerElement.nextSibling.style.color = 'red';
       }
     }))
   }
