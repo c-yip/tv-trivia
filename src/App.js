@@ -57,10 +57,19 @@ function App() {
     })
   }
 
-  // calculate score
+  function showWhichAnswersAreCorrect() {
+    quizData.map(question => question.answers.map((answer, index) => {
+      console.log(question.id+index)
+      if (answer.correct === true) {
+        document.getElementById(question.id + index).nextSibling.style.color = 'green';
+      }
+    }))
+  }
+  
   function calculateScore() {
     const correctAnswers = quizData.filter((question) => question.correctAnswer === 'true');
     setScore(correctAnswers.length);
+    showWhichAnswersAreCorrect();
     setGameOver(true);
   }
 

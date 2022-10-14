@@ -16,7 +16,7 @@ export default function QuizPage(props){
         <input 
           type="radio" 
           name={props.id} 
-          id={props.id} 
+          id={props.id + index} 
           value={answer.correct} 
           onChange={(e) => props.handleChange(e)} 
         />
