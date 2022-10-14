@@ -1,7 +1,13 @@
 export default function QuizPage(props){
   function replaceQuotesAndApostrophes(string) {
     const question = string;
-    const newQuestion = question.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
+    const newQuestion = question.replace(/&quot;/g, '"')
+      .replace(/&#039;/g, "'")
+      .replace(/&uacute;/, 'ú')
+      .replace(/&aacute;/, 'á')
+      .replace(/&eacute;/, 'é')
+      .replace(/&iacute;/, 'í')
+      .replace(/&oacute;/, 'ó');
     return newQuestion;
   }
 
