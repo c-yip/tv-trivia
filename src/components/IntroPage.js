@@ -22,9 +22,10 @@ export default function IntroPage(props) {
       </div>
       {props.gameReady && <button className='start-btn' onClick={props.startGame}>Start quiz</button>}
 
-      <h3 className="p-2">{`Your high score: ${getHighScore(props.scoreArray)}`}</h3>
-      <h3 className="p-2">{`Your previous score: ${getPreviousScore(props.scoreArray)}`}</h3>
-      <h3 className="p-2">{`Your average score: ${getAverageScore(props.scoreArray)}`}</h3>
+      {props.scoreArray.length > 0 && <h3 className="p-2">{`Your high score: ${getHighScore(props.scoreArray)}`}</h3>}
+      {props.scoreArray.length > 0 && <h3 className="p-2">{`Your previous score: ${getPreviousScore(props.scoreArray)}`}</h3>}
+      {props.scoreArray.length > 0 && <h3 className="p-2">{`Your average score: ${getAverageScore(props.scoreArray)}`}</h3>}
+      
     </div>
   )
 }
