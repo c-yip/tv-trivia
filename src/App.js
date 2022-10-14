@@ -11,6 +11,9 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [gameReady, setGameReady] = useState(false);
   const [gameReset, setGameReset] = useState(false);
+  const [scoreArray, setScoreArray] = useState(
+    () => JSON.parse(localStorage.getItem("localScores")) || []
+  );
 
   useEffect(() => {
     fetch('https://opentdb.com/api.php?amount=5&category=14&type=multiple')
@@ -77,6 +80,7 @@ function App() {
   function calculateScore() {
     const correctAnswers = quizData.filter((question) => question.correctAnswer === 'true');
     setScore(correctAnswers.length);
+    setScoreArray(prev => [...prev, correctAnswers.length]);
     showWhichAnswersAreCorrect();
     setGameOver(true);
   }
@@ -106,11 +110,15 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    localStorage.setItem('localScores', JSON.stringify(scoreArray));
+  }, [scoreArray]);
+
   console.log(quizData);
 
   return (
     <main className="container-fluid">
-      {quizStart && <IntroPage startGame={startGame} gameReady={gameReady}/>}    
+      {quizStart && <IntroPage startGame={startGame} gameReady={gameReady} scoreArray={scoreArray}/>}    
       {!quizStart && 
         <div className="quiz-page container-fluid">
           <div className="row">
