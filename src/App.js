@@ -115,25 +115,30 @@ function App() {
   }, [scoreArray]);
 
   return (
-    <main className="container-fluid">
-      {quizStart && <IntroPage startGame={startGame} gameReady={gameReady} scoreArray={scoreArray}/>}    
-      {!quizStart && 
-        <div className="quiz-page container-fluid">
-          <div className="row">
-            {quizData.map((question, index) => {
-              return <QuizPage key={index} question={question} id={question.id} handleChange={handleChange}/>
-            })}
+    <React.Fragment>
+      <main className="container-fluid">
+        {quizStart && <IntroPage startGame={startGame} gameReady={gameReady} scoreArray={scoreArray}/>}    
+        {!quizStart && 
+          <div className="quiz-page container-fluid">
+            <div className="row">
+              {quizData.map((question, index) => {
+                return <QuizPage key={index} question={question} id={question.id} handleChange={handleChange}/>
+              })}
+            </div>
+            
+            <div className="row p-3 d-flex gap-2 justify-content-center">
+              {gameOver && <h2 className="score-message">{scoreMessage()}</h2>}
+              {!gameOver ? <button className="check-answers-btn btn btn-outline-primary btn-lg w-50" onClick={calculateScore}>Check answers</button> : 
+                <button className="play-again-btn btn btn-outline-primary btn-lg w-50" onClick={resetGame}>Play again</button>}
+            </div>
           </div>
-          
-          <div className="row p-3 d-flex gap-2 justify-content-center">
-            {gameOver && <h2 className="score-message">{scoreMessage()}</h2>}
-            {!gameOver ? <button className="check-answers-btn btn btn-outline-primary btn-lg w-50" onClick={calculateScore}>Check answers</button> : 
-              <button className="play-again-btn btn btn-outline-primary btn-lg w-50" onClick={resetGame}>Play again</button>}
-          </div>
-        </div>
-      }
-      {/* footer */}
-    </main>
+        }
+      </main>
+      <footer className="bg-dark text-light d-flex justify-content-center align-items-center p-2 gap-3">
+        <p>Created by Christian Yip</p>
+        <a href="https://github.com/c-yip/tv-trivia"><img src={require("./GitHub-Mark-Light-32px.png")} alt="GitHub"/></a>
+      </footer>
+    </React.Fragment>
   );
 }
 
