@@ -10,6 +10,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [gameReady, setGameReady] = useState(false);
+  const [gameReset, setGameReset] = useState(false);
 
   useEffect(() => {
     fetch('https://opentdb.com/api.php?amount=5&category=14&type=multiple')
@@ -30,7 +31,7 @@ function App() {
 
         setGameReady(true)
       ))
-  }, []);
+  }, [gameReset]);
 
   function mixAnswers(array) {
     const mixedArray = array.sort(() => Math.random() - 0.5);
@@ -78,8 +79,16 @@ function App() {
     setGameOver(true);
   }
 
+  function resetGame() {
+    setQuizStart(true);
+    setQuizData();
+    setScore(0);
+    setGameOver(false);
+    setGameReady(false);
+    setGameReset(prev => !prev);
+  }
+
   console.log(quizData);
-  console.log('score: ', score);
 
   return (
     <main>
@@ -90,7 +99,7 @@ function App() {
             return <QuizPage key={index} question={question} id={question.id} handleChange={handleChange}/>
           })}
           {!gameOver ? <button className="check-answers-btn" onClick={calculateScore}>Check answers</button> : 
-            <button className="play-again-btn">Play again</button>}
+            <button className="play-again-btn" onClick={resetGame}>Play again</button>}
           {gameOver && <h3 className="score-message">{`You scored ${score}/5!`}</h3>}
         </div>
       }
