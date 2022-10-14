@@ -9,10 +9,6 @@ function App() {
   const [quizData, setQuizData] = useState();
   const [score, setScore] = useState(0);
 
-  function startGame() {
-    setQuizStart(prev => !prev);
-  }
-
   useEffect(() => {
     fetch('https://opentdb.com/api.php?amount=5&category=14&type=multiple')
       .then(res => res.json())
@@ -31,6 +27,21 @@ function App() {
         })
       ))
   }, []);
+
+  function mixAnswers(array) {
+    const mixedArray = array.sort(() => Math.random() - 0.5);
+    return mixedArray;
+  }
+
+  function startGame() {
+    setQuizStart(prev => !prev);
+    setQuizData(prev => prev.map((question) => {
+      return {
+        ...question,
+        answers: mixAnswers(question.answers)
+      }
+    }))
+  }
 
   function handleChange(event) {
     const {name, value, type, checked} = event.target
