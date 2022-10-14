@@ -4,9 +4,7 @@ html, body, h1, p {
 }
 
 .intro-page, .quiz-page {
-  position: absolute;
-  height: 100%;
-  width:100%;
+  min-height: 100vh;
 }
 
 .intro-page {
@@ -44,6 +42,7 @@ html, body, h1, p {
   border-radius: 15px;
   font-weight: bold;
   cursor: pointer;
+  width: auto;
 }
 
 .start-btn:focus {

@@ -107,7 +107,7 @@ function App() {
   console.log(quizData);
 
   return (
-    <main>
+    <main className="container-fluid">
       {quizStart && <IntroPage startGame={startGame} gameReady={gameReady}/>}    
       {!quizStart && 
         <div className="quiz-page">
