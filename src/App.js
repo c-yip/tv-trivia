@@ -9,6 +9,7 @@ function App() {
   const [quizData, setQuizData] = useState();
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+  const [gameReady, setGameReady] = useState(false);
 
   useEffect(() => {
     fetch('https://opentdb.com/api.php?amount=5&category=14&type=multiple')
@@ -25,7 +26,9 @@ function App() {
               {answer: question.incorrect_answers[2], correct: false}],
             correctAnswer: false,
           }
-        })
+        }),
+
+        setGameReady(true)
       ))
   }, []);
 
@@ -66,7 +69,7 @@ function App() {
 
   return (
     <main>
-      {quizStart && <IntroPage startGame={startGame}/>}    
+      {quizStart && <IntroPage startGame={startGame} gameReady={gameReady}/>}    
       {!quizStart && 
         <div className="quiz-page">
           {quizData.map((question, index) => {

@@ -5,7 +5,7 @@ export default function IntroPage(props) {
         <h1 className='title'>TV TRIVIA</h1>
         <p className='message'>Put your totally useful TV knowledge to the test!</p>
       </div>
-      <button className='start-btn' onClick={props.startGame}>Start quiz</button>
+      {props.gameReady && <button className='start-btn' onClick={props.startGame}>Start quiz</button>}
     </div>
   )
 }
