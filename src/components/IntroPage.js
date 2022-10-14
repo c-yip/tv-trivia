@@ -8,6 +8,11 @@ export default function IntroPage(props) {
     const previousScore = array[array.length - 1];
     return previousScore;
   }
+
+  function getAverageScore(array) {
+    const averageScore = Math.round(array.reduce((a, b) => a + b, 0) / array.length);
+    return averageScore;
+  }
   
   return (
     <div className='intro-page row'>
@@ -18,7 +23,8 @@ export default function IntroPage(props) {
       {props.gameReady && <button className='start-btn' onClick={props.startGame}>Start quiz</button>}
 
       <h3 className="p-2">{`Your high score: ${getHighScore(props.scoreArray)}`}</h3>
-      <h3>{`Your previous score: ${getPreviousScore(props.scoreArray)}`}</h3>
+      <h3 className="p-2">{`Your previous score: ${getPreviousScore(props.scoreArray)}`}</h3>
+      <h3 className="p-2">{`Your average score: ${getAverageScore(props.scoreArray)}`}</h3>
     </div>
   )
 }
