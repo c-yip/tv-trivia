@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/tv-trivia/static/css/main.f5dca574.css",
-    "main.js": "/tv-trivia/static/js/main.1421b013.js",
+    "main.js": "/tv-trivia/static/js/main.73b49e82.js",
     "static/js/787.5e5ba5a8.chunk.js": "/tv-trivia/static/js/787.5e5ba5a8.chunk.js",
     "static/media/intro-page.png": "/tv-trivia/static/media/intro-page.b5d902aae04b9fe48d17.png",
     "index.html": "/tv-trivia/index.html",
     "main.f5dca574.css.map": "/tv-trivia/static/css/main.f5dca574.css.map",
-    "main.1421b013.js.map": "/tv-trivia/static/js/main.1421b013.js.map",
+    "main.73b49e82.js.map": "/tv-trivia/static/js/main.73b49e82.js.map",
     "787.5e5ba5a8.chunk.js.map": "/tv-trivia/static/js/787.5e5ba5a8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f5dca574.css",
-    "static/js/main.1421b013.js"
+    "static/js/main.73b49e82.js"
   ]
 }
